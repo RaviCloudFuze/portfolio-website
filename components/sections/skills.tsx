@@ -6,8 +6,9 @@ import {
   FiLayers,
   FiSettings,
   FiBriefcase,
-  type IconBaseProps,
+  FiMonitor,
 } from "react-icons/fi";
+import type { IconBaseProps } from "react-icons";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
 import { skillCategories } from "@/data/skills";
@@ -20,11 +21,12 @@ const ICON_MAP: Record<string, IconRenderer> = {
   frameworks: (p) => <FiLayers {...p} />,
   tools: (p) => <FiSettings {...p} />,
   current: (p) => <FiBriefcase {...p} />,
+  ide: (p) => <FiMonitor {...p} />,
 };
 
 export default function Skills() {
   return (
-    <section id="skills" className="section">
+    <section id="skills" className="section bg-[rgb(var(--bg-alt))]/60">
       <div className="container-page">
         <SectionHeading
           kicker="Skills"
@@ -45,7 +47,7 @@ export default function Skills() {
                     <h3 className="font-display text-lg font-semibold sm:text-xl">
                       {cat.title}
                     </h3>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">
+                    <p className="text-sm text-slate-500 dark:text-slate-400">
                       {cat.description}
                     </p>
                   </div>

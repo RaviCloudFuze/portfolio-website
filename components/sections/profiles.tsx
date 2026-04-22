@@ -16,7 +16,7 @@ const ICON_MAP = {
 
 export default function Profiles() {
   return (
-    <section id="profiles" className="section bg-[rgb(var(--bg-alt))]/60">
+    <section id="profiles" className="section">
       <div className="container-page">
         <SectionHeading
           kicker="Coding Profiles"
@@ -56,7 +56,7 @@ export default function Profiles() {
                     <p className="mt-1.5 font-mono text-sm text-brand-600 dark:text-brand-300">
                       {p.handle}
                     </p>
-                    <p className="mt-3 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
+                    <p className="mt-3 text-base leading-relaxed text-slate-600 dark:text-slate-400">
                       {p.description}
                     </p>
                     {p.stat && (

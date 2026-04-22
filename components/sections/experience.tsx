@@ -3,7 +3,7 @@
 import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiExternalLink, FiMapPin } from "react-icons/fi";
+import { FiMapPin } from "react-icons/fi";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
 import { SkillPill } from "@/components/skill-icon";
@@ -26,7 +26,7 @@ function CompanyLogo({
 
   if (failed) {
     return (
-      <div className="flex h-full w-full items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-lg font-bold text-white shadow-glow">
+      <div className="flex h-full w-full items-center justify-center rounded-2xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-2xl font-bold text-white shadow-glow">
         {fallbackChar}
       </div>
     );
@@ -38,7 +38,7 @@ function CompanyLogo({
       src={src}
       alt={alt}
       onError={() => setFailed(true)}
-      className="h-full w-full rounded-md object-contain transition-transform duration-500 group-hover:scale-110"
+      className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-110"
       loading="lazy"
     />
   );
@@ -76,7 +76,7 @@ export default function Experience() {
 
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex items-start gap-4">
-                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-white p-1.5 transition-transform dark:border-white/10 dark:bg-white/5">
+                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl border border-slate-200 bg-white p-1 transition-transform dark:border-white/10 dark:bg-white/5 sm:h-20 sm:w-20">
                       <CompanyLogo
                         src={exp.logo}
                         alt={`${exp.company} logo`}
@@ -86,20 +86,16 @@ export default function Experience() {
                     <div>
                       <h3 className="font-display text-lg font-semibold leading-snug sm:text-xl">
                         {exp.role}
-                        <span className="mx-1.5 text-slate-400 dark:text-slate-500">
-                          —
+                        <span className="text-slate-400 dark:text-slate-500">
+                          {", "}
                         </span>
                         <Link
                           href={exp.website}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-brand-600 hover:underline dark:text-brand-300"
+                          className="text-brand-600 hover:underline dark:text-brand-300"
                         >
                           {exp.company}
-                          <FiExternalLink
-                            size={13}
-                            className="opacity-70 transition group-hover:opacity-100"
-                          />
                         </Link>
                       </h3>
                       <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400">
@@ -114,15 +110,15 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <p className="mt-4 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
+                <p className="mt-5 text-[17px] leading-[1.7] text-slate-600 dark:text-slate-400">
                   {exp.description}
                 </p>
 
-                <ul className="mt-5 space-y-3">
+                <ul className="mt-6 space-y-4">
                   {exp.highlights.map((h) => (
                     <li
                       key={h}
-                      className="flex items-start gap-3 text-[0.95rem] leading-relaxed text-slate-700 dark:text-slate-300"
+                      className="flex items-start gap-3 text-[17px] leading-[1.7] text-slate-700 dark:text-slate-300"
                     >
                       <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-brand-500 to-accent-500" />
                       <span>{h}</span>

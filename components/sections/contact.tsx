@@ -5,27 +5,16 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiCheckCircle,
-  FiGithub,
   FiLinkedin,
   FiMail,
   FiPaperclip,
+  FiPhone,
   FiSend,
   FiX,
 } from "react-icons/fi";
-import { SiLeetcode, SiCodechef, SiWhatsapp } from "react-icons/si";
+import { SiWhatsapp } from "react-icons/si";
 import SectionHeading from "@/components/section-heading";
 import { siteConfig } from "@/data/site";
-
-const socials = [
-  { label: "GitHub", href: siteConfig.socials.github, Icon: FiGithub },
-  { label: "LinkedIn", href: siteConfig.socials.linkedin, Icon: FiLinkedin },
-  { label: "LeetCode", href: siteConfig.socials.leetcode, Icon: SiLeetcode },
-  {
-    label: "CodeChef",
-    href: siteConfig.socials.codechef,
-    Icon: SiCodechef,
-  },
-];
 
 type Status = "idle" | "sending" | "sent";
 
@@ -73,7 +62,7 @@ export default function Contact() {
       "",
       form.email && `You can reach me back at ${form.email}.`,
       file &&
-        `(I'd also like to share a file: ${file.name} — ${formatBytes(file.size)}. I'll attach it here on WhatsApp.)`,
+        `(I'd also like to share a file: ${file.name}, ${formatBytes(file.size)}. I'll attach it here on WhatsApp.)`,
     ]
       .filter(Boolean)
       .join("\n");
@@ -99,7 +88,7 @@ export default function Contact() {
           kicker="Contact"
           align="center"
           title="Let's build something together"
-          description="Send a message — it'll open WhatsApp with your note prefilled so we can start the conversation instantly."
+          description="Send a message and it will open WhatsApp with your note prefilled so we can start the conversation instantly."
         />
 
         <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1fr_1.2fr]">
@@ -108,61 +97,48 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.55, ease: "easeOut" }}
-            className="card flex flex-col justify-between gap-7 p-7 sm:p-8"
+            className="card flex flex-col gap-5 p-7 sm:p-8"
           >
             <div>
               <h3 className="font-display text-xl font-semibold">
                 Reach me directly
               </h3>
-              <p className="mt-2 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
-                Prefer email, WhatsApp, or socials? Take your pick.
+              <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-400">
+                Email, phone, or LinkedIn work best.
               </p>
-
-              <div className="mt-6 flex flex-col gap-3">
-                <Link
-                  href={`mailto:${siteConfig.email}`}
-                  className="group inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium transition-all hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 hover:shadow-[0_0_22px_-6px_rgba(99,102,241,0.55)] dark:border-white/10 dark:bg-white/5 dark:hover:text-brand-300"
-                >
-                  <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-300">
-                    <FiMail size={18} />
-                  </span>
-                  <span className="truncate">{siteConfig.email}</span>
-                </Link>
-
-                {whatsappNumber && (
-                  <Link
-                    href={`https://wa.me/${whatsappNumber}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-medium transition-all hover:-translate-y-0.5 hover:border-[#25d366]/60 hover:text-[#1ea455] hover:shadow-[0_0_22px_-6px_rgba(37,211,102,0.55)] dark:border-white/10 dark:bg-white/5 dark:hover:text-[#25d366]"
-                  >
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-[#25d366]/15 text-[#25d366]">
-                      <SiWhatsapp size={18} />
-                    </span>
-                    <span>{siteConfig.phone}</span>
-                  </Link>
-                )}
-              </div>
             </div>
 
-            <div>
-              <p className="mb-3 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500 dark:text-slate-400">
-                Elsewhere
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {socials.map(({ label, href, Icon }) => (
-                  <Link
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-3.5 py-2 text-sm font-medium text-slate-700 transition-all hover:-translate-y-0.5 hover:scale-105 hover:border-brand-400 hover:text-brand-600 hover:shadow-[0_0_22px_-6px_rgba(99,102,241,0.6)] dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-brand-300"
-                  >
-                    <Icon size={15} />
-                    {label}
-                  </Link>
-                ))}
+            <div className="flex flex-col gap-3">
+              <Link
+                href={`mailto:${siteConfig.email}`}
+                className="group inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium transition-all hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 hover:shadow-[0_0_22px_-6px_rgba(99,102,241,0.55)] dark:border-white/10 dark:bg-white/5 dark:hover:text-brand-300"
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-300">
+                  <FiMail size={19} />
+                </span>
+                <span className="truncate">{siteConfig.email}</span>
+              </Link>
+
+              <div className="inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium dark:border-white/10 dark:bg-white/5">
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand-500/10 text-brand-600 dark:text-brand-300">
+                  <FiPhone size={19} />
+                </span>
+                <span className="select-all font-mono tracking-wide text-slate-800 dark:text-slate-100">
+                  {siteConfig.phone}
+                </span>
               </div>
+
+              <Link
+                href={siteConfig.socials.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium transition-all hover:-translate-y-0.5 hover:border-[#0a66c2]/60 hover:text-[#0a66c2] hover:shadow-[0_0_22px_-6px_rgba(10,102,194,0.55)] dark:border-white/10 dark:bg-white/5 dark:hover:text-[#4aa3f0]"
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#0a66c2]/10 text-[#0a66c2] dark:text-[#4aa3f0]">
+                  <FiLinkedin size={19} />
+                </span>
+                <span>Message me on LinkedIn</span>
+              </Link>
             </div>
           </motion.div>
 
@@ -245,7 +221,7 @@ export default function Contact() {
                   className="flex cursor-pointer items-center gap-3 rounded-xl border border-dashed border-slate-300 bg-slate-50/60 px-4 py-3 text-sm text-slate-600 transition hover:border-brand-400 hover:text-brand-600 dark:border-white/15 dark:bg-white/5 dark:text-slate-300 dark:hover:text-brand-300"
                 >
                   <FiPaperclip size={16} />
-                  <span>Click to attach a file — its name will be shared in the message.</span>
+                  <span>Click to attach a file. Its name will be shared in the message.</span>
                 </label>
               ) : (
                 <div className="flex items-center justify-between gap-3 rounded-xl border border-brand-400/40 bg-brand-500/5 px-4 py-3 text-sm">
@@ -282,8 +258,8 @@ export default function Contact() {
             </div>
 
             <div className="mt-6 flex flex-col items-stretch justify-between gap-3 sm:flex-row sm:items-center">
-              <p className="text-xs leading-relaxed text-slate-500 dark:text-slate-400">
-                Opens WhatsApp in a new tab with your message prefilled — no
+              <p className="text-sm leading-relaxed text-slate-500 dark:text-slate-400">
+                Opens WhatsApp in a new tab with your message prefilled. No
                 data leaves your device.
               </p>
               <motion.button

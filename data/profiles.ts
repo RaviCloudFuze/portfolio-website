@@ -11,11 +11,10 @@ export const codingProfiles: CodingProfile[] = [
   {
     id: "github",
     name: "GitHub",
-    handle: "@dravitejachoudary6",
-    // TODO: replace with your real GitHub URL if different.
+    handle: "@RaviTejaDudipalli",
     url: "https://github.com/RaviTejaDudipalli",
     description:
-      "Side projects, backend experiments, and learning repos in Java & Spring Boot.",
+      "Side projects, backend experiments, and learning repos in Java and Spring Boot.",
   },
   {
     id: "leetcode",
@@ -28,10 +27,9 @@ export const codingProfiles: CodingProfile[] = [
   {
     id: "codechef",
     name: "CodeChef",
-    handle: "dravitejachoudary6",
-    // TODO: replace with your real CodeChef URL if different.
+    handle: "ravitejad6",
     url: "https://www.codechef.com/users/ravitejad6",
     description:
-      "Competitive programming — contest participation and archived solutions.",
+      "Competitive programming, contest participation, and archived solutions.",
   },
 ];

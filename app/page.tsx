@@ -1,20 +1,20 @@
 import Hero from "@/components/sections/hero";
-import Resume from "@/components/sections/resume";
+import Skills from "@/components/sections/skills";
 import Experience from "@/components/sections/experience";
 import Projects from "@/components/sections/projects";
-import Skills from "@/components/sections/skills";
 import Profiles from "@/components/sections/profiles";
+import Resume from "@/components/sections/resume";
 import Contact from "@/components/sections/contact";
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Resume />
+      <Skills />
       <Experience />
       <Projects />
-      <Skills />
       <Profiles />
+      <Resume />
       <Contact />
     </>
   );

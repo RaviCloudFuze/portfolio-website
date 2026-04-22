@@ -5,8 +5,7 @@ export type SkillCategory = {
   skills: string[];
 };
 
-// NOTE: Keep the `id` values (languages / frameworks / tools / current) as-is —
-// the Skills section component maps each id to a category icon.
+// NOTE: `id` values map to icons in components/sections/skills.tsx.
 export const skillCategories: SkillCategory[] = [
   {
     id: "languages",
@@ -54,9 +53,15 @@ export const skillCategories: SkillCategory[] = [
     description: "Cloud platforms and certifications.",
     skills: [
       "Google Cloud Platform",
-      "GCP — Cloud Digital Leader (Certified)",
-      "GCP — Associate Cloud Engineer (Certified)",
-      "AWS"
+      "GCP Cloud Digital Leader (Certified)",
+      "GCP Associate Cloud Engineer (Certified)",
+      "AWS",
     ],
+  },
+  {
+    id: "ide",
+    title: "IDE",
+    description: "Editors I live in day to day.",
+    skills: ["IntelliJ IDEA", "VS Code", "Cursor", "Android Studio"],
   },
 ];

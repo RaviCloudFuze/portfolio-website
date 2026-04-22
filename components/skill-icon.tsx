@@ -23,8 +23,10 @@ import {
   SiGoogle,
   SiJavascript,
   SiTypescript,
+  SiIntellijidea,
+  SiAndroidstudio,
 } from "react-icons/si";
-import { TbApi } from "react-icons/tb";
+import { TbApi, TbBrandVscode } from "react-icons/tb";
 import {
   FiShield,
   FiGrid,
@@ -35,10 +37,10 @@ import {
   FiTrendingUp,
   FiBox,
   FiCode,
+  FiMousePointer,
 } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 
-/** react-icons component per skill */
 const ICON_MAP: Record<string, IconType> = {
   Java: FaJava,
   JavaScript: SiJavascript,
@@ -71,15 +73,15 @@ const ICON_MAP: Record<string, IconType> = {
   GCP: SiGooglecloud,
   AWS: SiAmazonaws,
   "Google Apps Script": SiGoogle,
-  "GCP — Cloud Digital Leader (Certified)": FiAward,
-  "GCP — Associate Cloud Engineer (Certified)": FiAward,
+  "GCP Cloud Digital Leader (Certified)": FiAward,
+  "GCP Associate Cloud Engineer (Certified)": FiAward,
   "Agile / Scrum": FiTrendingUp,
+  "IntelliJ IDEA": SiIntellijidea,
+  "VS Code": TbBrandVscode,
+  Cursor: FiMousePointer,
+  "Android Studio": SiAndroidstudio,
 };
 
-/**
- * Brand-accurate colors. Each chosen for contrast on both light and dark
- * backgrounds (no pure-black / pure-white brands — we adjust those).
- */
 const COLOR_MAP: Record<string, string> = {
   Java: "#f89820",
   JavaScript: "#f7df1e",
@@ -112,9 +114,13 @@ const COLOR_MAP: Record<string, string> = {
   GCP: "#4285f4",
   AWS: "#ff9900",
   "Google Apps Script": "#4285f4",
-  "GCP — Cloud Digital Leader (Certified)": "#eab308",
-  "GCP — Associate Cloud Engineer (Certified)": "#eab308",
+  "GCP Cloud Digital Leader (Certified)": "#eab308",
+  "GCP Associate Cloud Engineer (Certified)": "#eab308",
   "Agile / Scrum": "#0ea5e9",
+  "IntelliJ IDEA": "#fe4a56",
+  "VS Code": "#007acc",
+  Cursor: "#94a3b8",
+  "Android Studio": "#3ddc84",
 };
 
 const DEFAULT_COLOR = "#6366f1";
@@ -134,10 +140,6 @@ const SIZES = {
 
 type Size = keyof typeof SIZES;
 
-/**
- * Big tile — used in the Skills grid.
- * Colored icon in a tinted container; name below.
- */
 export function SkillTile({
   skill,
   size = "md",
@@ -177,10 +179,6 @@ export function SkillTile({
   );
 }
 
-/**
- * Inline pill — used inside Experience / Project cards for tech stack chips.
- * Colored icon sits to the left of the label.
- */
 export function SkillPill({
   skill,
   className,

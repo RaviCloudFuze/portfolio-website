@@ -72,7 +72,7 @@ export default function Projects() {
                 <h3 className="font-display text-lg font-semibold sm:text-xl">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
+                <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-400">
                   {p.description}
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">

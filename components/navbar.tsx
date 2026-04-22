@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
@@ -51,17 +52,24 @@ export default function Navbar() {
       )}
     >
       <nav className="container-page flex h-16 items-center justify-between">
-        <Link
-          href="#home"
-          className="group inline-flex items-center gap-2 font-display text-base font-bold tracking-tight"
-        >
-          <span className="relative inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 text-white shadow-glow">
-            <span className="font-mono text-sm">
-              {siteConfig.name.charAt(0)}
-            </span>
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-          </span>
-          <span className="hidden sm:inline">{siteConfig.name.split(" ")[0]}.dev</span>
+        <Link href="#home" aria-label={`${siteConfig.name} — Home`} className="inline-block">
+          <motion.div
+            whileHover={{ scale: 2 }}
+            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
+            className="relative origin-left"
+          >
+            <div className="relative h-10 w-10 overflow-hidden rounded-full bg-slate-100 ring-2 ring-brand-500/40 shadow-[0_4px_14px_-2px_rgba(15,23,42,0.25)] transition-shadow duration-300 hover:shadow-[0_0_36px_-4px_rgba(99,102,241,0.75)] dark:bg-slate-800 dark:ring-brand-400/40">
+              <Image
+                src="/company-logos/myself.jpg"
+                alt={siteConfig.name}
+                width={80}
+                height={80}
+                quality={95}
+                priority
+                className="h-full w-full select-none object-cover"
+              />
+            </div>
+          </motion.div>
         </Link>
 
         <ul className="hidden items-center gap-1 md:flex">

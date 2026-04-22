@@ -13,16 +13,16 @@ import { siteConfig } from "@/data/site";
 import SectionHeading from "@/components/section-heading";
 
 const snapshotBullets = [
-  "3+ years shipping production Java & Spring Boot services",
-  "Designed an end-to-end security model for the CloudFuze Manage product",
-  "Integrated deep/shallow linking into Google Flight Search at Accenture",
-  "GCP certified — Cloud Digital Leader & Associate Cloud Engineer",
+  "3+ years designing Java and Spring Boot microservices for enterprise cloud products",
+  "Built a complete security model from scratch for the CloudFuze Manage workspace governance product",
+  "Engineered backend services for an AI Adoption Dashboard that surfaces real feature usage and cost insights",
+  "Refactored core migration services, significantly improving email, message, and content migration reliability",
+  "Cloud and DevOps fluent: GCP (Cloud Digital Leader, Associate Cloud Engineer), Docker, Kubernetes, Jenkins, Kafka",
 ];
 
 export default function Resume() {
   const [pdfFailed, setPdfFailed] = React.useState(false);
 
-  // Basic HEAD probe — if the PDF is missing, swap to a clear fallback UI.
   React.useEffect(() => {
     let cancelled = false;
     fetch(siteConfig.resumeUrl, { method: "HEAD" })
@@ -43,7 +43,7 @@ export default function Resume() {
         <SectionHeading
           kicker="Resume"
           title="The long-form version"
-          description="Preview my resume inline or download the PDF."
+          description="Preview my resume below or download the PDF."
         />
 
         <div className="grid gap-6 lg:grid-cols-[1.4fr_1fr]">
@@ -57,7 +57,7 @@ export default function Resume() {
             <div className="flex items-center justify-between border-b border-slate-200 px-4 py-3 dark:border-white/10">
               <div className="flex items-center gap-2 text-sm font-medium">
                 <FiFileText className="text-brand-500" />
-                <span>{siteConfig.name} — Resume.pdf</span>
+                <span>{siteConfig.name}, Resume.pdf</span>
               </div>
               <div className="flex items-center gap-1">
                 <span className="h-2.5 w-2.5 rounded-full bg-red-400/80" />
@@ -66,7 +66,8 @@ export default function Resume() {
               </div>
             </div>
 
-            <div className="relative aspect-[3/4] w-full bg-slate-100 dark:bg-slate-900">
+            {/* Aspect tuned to US-Letter (8.5 x 11) so the page fits cleanly without cropping */}
+            <div className="relative flex aspect-[8.5/11] w-full items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-900">
               {pdfFailed ? (
                 <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
                   <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
@@ -76,9 +77,9 @@ export default function Resume() {
                     <p className="font-display text-base font-semibold">
                       Resume preview unavailable
                     </p>
-                    <p className="mt-1 max-w-sm text-sm text-slate-500 dark:text-slate-400">
-                      The PDF hasn&apos;t been uploaded yet — drop it at{" "}
-                      <code className="rounded bg-slate-200 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10">
+                    <p className="mt-1 max-w-sm text-base leading-relaxed text-slate-500 dark:text-slate-400">
+                      The PDF hasn&apos;t been uploaded yet. Drop it at{" "}
+                      <code className="rounded bg-slate-200 px-1.5 py-0.5 font-mono text-sm dark:bg-white/10">
                         public/resume.pdf
                       </code>{" "}
                       and it will appear here.
@@ -93,32 +94,12 @@ export default function Resume() {
                   </Link>
                 </div>
               ) : (
-                <object
-                  data={`${siteConfig.resumeUrl}#view=FitH&toolbar=0`}
-                  type="application/pdf"
-                  className="h-full w-full"
-                  aria-label="Resume PDF preview"
-                >
-                  <iframe
-                    src={`${siteConfig.resumeUrl}#view=FitH`}
-                    title="Resume"
-                    className="h-full w-full"
-                  />
-                  <div className="flex h-full flex-col items-center justify-center gap-3 p-8 text-center">
-                    <FiFileText size={32} className="text-slate-400" />
-                    <p className="text-sm text-slate-500">
-                      Your browser can&apos;t display this PDF inline.
-                    </p>
-                    <Link
-                      href={siteConfig.resumeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn-primary"
-                    >
-                      <FiExternalLink /> Open in new tab
-                    </Link>
-                  </div>
-                </object>
+                <iframe
+                  src={`${siteConfig.resumeUrl}#view=FitH&toolbar=0&navpanes=0&pagemode=none`}
+                  title={`${siteConfig.name} resume`}
+                  className="absolute inset-0 block h-full w-full border-0"
+                  loading="lazy"
+                />
               )}
             </div>
           </motion.div>
@@ -133,16 +114,17 @@ export default function Resume() {
             <h3 className="font-display text-xl font-semibold">
               Quick snapshot
             </h3>
-            <p className="text-sm text-slate-600 dark:text-slate-400">
-              Senior Software Engineer building scalable Java &amp; Spring Boot
-              backends — microservices, REST APIs, and data-driven systems. I
-              own features end-to-end, from design and estimation through
-              deployment, optimization, and mentoring.
+            <p className="text-base leading-relaxed text-slate-600 dark:text-slate-400">
+              Senior Software Engineer with 3+ years building scalable Java and
+              Spring Boot services for enterprise cloud products. I ship secure,
+              high-availability distributed systems, owning features end-to-end
+              from design through production. Currently working on workspace
+              governance, security, and AI adoption analytics at CloudFuze.
             </p>
-            <ul className="space-y-3 text-sm">
+            <ul className="space-y-3 text-base leading-relaxed">
               {snapshotBullets.map((item) => (
-                <li key={item} className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-brand-500 to-accent-500" />
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-brand-500 to-accent-500" />
                   <span className="text-slate-700 dark:text-slate-300">
                     {item}
                   </span>

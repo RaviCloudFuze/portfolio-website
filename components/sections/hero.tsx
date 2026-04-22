@@ -88,13 +88,25 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-6 max-w-xl text-base text-slate-600 sm:text-lg dark:text-slate-400"
+              className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-400"
             >
-              {siteConfig.tagline} Currently a{" "}
+              Result-oriented backend engineer with{" "}
               <span className="font-medium text-slate-800 dark:text-slate-200">
-                {siteConfig.role}
+                3+ years
               </span>{" "}
-              crafting cloud data platforms.
+              building scalable microservices, REST APIs, and data-driven
+              distributed systems in{" "}
+              <span className="font-medium text-slate-800 dark:text-slate-200">
+                Java and Spring Boot
+              </span>
+              . Focused on performance, clean architecture, and end-to-end
+              ownership. Currently working as a{" "}
+              <span className="font-medium text-slate-800 dark:text-slate-200">
+                Senior Software Engineer
+              </span>{" "}
+              building workspace governance, security, and an AI Dashboard
+              showcasing real AI usage and costs for systems, all in an Agile
+              environment.
             </motion.p>
           </div>
 
