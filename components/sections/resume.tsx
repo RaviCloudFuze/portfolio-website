@@ -1,12 +1,42 @@
 "use client";
 
+import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiDownload, FiExternalLink, FiFileText } from "react-icons/fi";
+import {
+  FiAlertCircle,
+  FiDownload,
+  FiExternalLink,
+  FiFileText,
+} from "react-icons/fi";
 import { siteConfig } from "@/data/site";
 import SectionHeading from "@/components/section-heading";
 
+const snapshotBullets = [
+  "3+ years shipping production Java & Spring Boot services",
+  "Designed an end-to-end security model for the CloudFuze Manage product",
+  "Integrated deep/shallow linking into Google Flight Search at Accenture",
+  "GCP certified — Cloud Digital Leader & Associate Cloud Engineer",
+];
+
 export default function Resume() {
+  const [pdfFailed, setPdfFailed] = React.useState(false);
+
+  // Basic HEAD probe — if the PDF is missing, swap to a clear fallback UI.
+  React.useEffect(() => {
+    let cancelled = false;
+    fetch(siteConfig.resumeUrl, { method: "HEAD" })
+      .then((r) => {
+        if (!cancelled && !r.ok) setPdfFailed(true);
+      })
+      .catch(() => {
+        if (!cancelled) setPdfFailed(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
   return (
     <section id="resume" className="section bg-[rgb(var(--bg-alt))]/60">
       <div className="container-page">
@@ -35,33 +65,61 @@ export default function Resume() {
                 <span className="h-2.5 w-2.5 rounded-full bg-green-400/80" />
               </div>
             </div>
+
             <div className="relative aspect-[3/4] w-full bg-slate-100 dark:bg-slate-900">
-              <object
-                data={`${siteConfig.resumeUrl}#view=FitH&toolbar=0`}
-                type="application/pdf"
-                className="h-full w-full"
-                aria-label="Resume PDF preview"
-              >
-                <iframe
-                  src={`${siteConfig.resumeUrl}#view=FitH`}
-                  title="Resume"
-                  className="h-full w-full"
-                />
-                <div className="flex h-full flex-col items-center justify-center gap-3 p-8 text-center">
-                  <FiFileText size={32} className="text-slate-400" />
-                  <p className="text-sm text-slate-500">
-                    Your browser can&apos;t display this PDF inline.
-                  </p>
+              {pdfFailed ? (
+                <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
+                  <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-amber-500/10 text-amber-500">
+                    <FiAlertCircle size={22} />
+                  </div>
+                  <div>
+                    <p className="font-display text-base font-semibold">
+                      Resume preview unavailable
+                    </p>
+                    <p className="mt-1 max-w-sm text-sm text-slate-500 dark:text-slate-400">
+                      The PDF hasn&apos;t been uploaded yet — drop it at{" "}
+                      <code className="rounded bg-slate-200 px-1.5 py-0.5 font-mono text-xs dark:bg-white/10">
+                        public/resume.pdf
+                      </code>{" "}
+                      and it will appear here.
+                    </p>
+                  </div>
                   <Link
                     href={siteConfig.resumeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    download
                     className="btn-primary"
                   >
-                    <FiExternalLink /> Open in new tab
+                    <FiDownload /> Try download
                   </Link>
                 </div>
-              </object>
+              ) : (
+                <object
+                  data={`${siteConfig.resumeUrl}#view=FitH&toolbar=0`}
+                  type="application/pdf"
+                  className="h-full w-full"
+                  aria-label="Resume PDF preview"
+                >
+                  <iframe
+                    src={`${siteConfig.resumeUrl}#view=FitH`}
+                    title="Resume"
+                    className="h-full w-full"
+                  />
+                  <div className="flex h-full flex-col items-center justify-center gap-3 p-8 text-center">
+                    <FiFileText size={32} className="text-slate-400" />
+                    <p className="text-sm text-slate-500">
+                      Your browser can&apos;t display this PDF inline.
+                    </p>
+                    <Link
+                      href={siteConfig.resumeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn-primary"
+                    >
+                      <FiExternalLink /> Open in new tab
+                    </Link>
+                  </div>
+                </object>
+              )}
             </div>
           </motion.div>
 
@@ -73,21 +131,16 @@ export default function Resume() {
             className="card flex flex-col gap-5 p-6 sm:p-8"
           >
             <h3 className="font-display text-xl font-semibold">
-              A quick snapshot
+              Quick snapshot
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-400">
-              {siteConfig.role} with hands-on experience shipping enterprise
-              cloud products end-to-end — from architecture to production
-              operations. I thrive in systems where scale, reliability, and
-              UX all matter.
+              Senior Software Engineer building scalable Java &amp; Spring Boot
+              backends — microservices, REST APIs, and data-driven systems. I
+              own features end-to-end, from design and estimation through
+              deployment, optimization, and mentoring.
             </p>
             <ul className="space-y-3 text-sm">
-              {[
-                "3+ years building distributed, high-throughput systems",
-                "Polyglot — Java, TypeScript, Python, Go",
-                "Comfortable on both sides of the stack",
-                "Active on open source and competitive programming",
-              ].map((item) => (
+              {snapshotBullets.map((item) => (
                 <li key={item} className="flex items-start gap-2">
                   <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r from-brand-500 to-accent-500" />
                   <span className="text-slate-700 dark:text-slate-300">

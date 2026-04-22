@@ -10,7 +10,7 @@ import {
   FiMail,
   FiSend,
 } from "react-icons/fi";
-import { SiLeetcode, SiHackerrank } from "react-icons/si";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import SectionHeading from "@/components/section-heading";
 import { siteConfig } from "@/data/site";
 
@@ -19,9 +19,9 @@ const socials = [
   { label: "LinkedIn", href: siteConfig.socials.linkedin, Icon: FiLinkedin },
   { label: "LeetCode", href: siteConfig.socials.leetcode, Icon: SiLeetcode },
   {
-    label: "HackerRank",
-    href: siteConfig.socials.hackerrank,
-    Icon: SiHackerrank,
+    label: "CodeChef",
+    href: siteConfig.socials.codechef,
+    Icon: SiCodechef,
   },
 ];
 

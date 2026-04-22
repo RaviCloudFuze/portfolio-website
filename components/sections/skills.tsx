@@ -1,13 +1,21 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FiCode, FiLayers, FiSettings, FiBriefcase } from "react-icons/fi";
-import type { IconBaseProps } from "react-icons";
+import {
+  FiCode,
+  FiLayers,
+  FiSettings,
+  FiBriefcase,
+  type IconBaseProps,
+} from "react-icons/fi";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
 import { skillCategories } from "@/data/skills";
+import { SkillTile } from "@/components/skill-icon";
 
-const ICON_MAP: Record<string, (p: IconBaseProps) => JSX.Element> = {
+type IconRenderer = (p: IconBaseProps) => JSX.Element;
+
+const ICON_MAP: Record<string, IconRenderer> = {
   languages: (p) => <FiCode {...p} />,
   frameworks: (p) => <FiLayers {...p} />,
   tools: (p) => <FiSettings {...p} />,
@@ -21,47 +29,32 @@ export default function Skills() {
         <SectionHeading
           kicker="Skills"
           title="Tools of the trade"
-          description="A grouped view of what I'm comfortable with — and what I use every day."
+          description="The languages, frameworks, and platforms I use to ship production software."
         />
 
-        <Stagger className="grid gap-5 md:grid-cols-2">
+        <Stagger className="space-y-10">
           {skillCategories.map((cat) => {
             const Icon = ICON_MAP[cat.id] ?? ICON_MAP.tools;
             return (
-              <motion.div
-                key={cat.id}
-                variants={staggerItem}
-                whileHover={{ y: -3 }}
-                transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                className="card relative overflow-hidden p-6"
-              >
-                <div
-                  aria-hidden
-                  className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gradient-to-br from-brand-500/15 to-accent-500/15 blur-2xl"
-                />
-                <div className="flex items-center gap-3">
+              <motion.div key={cat.id} variants={staggerItem}>
+                <div className="mb-5 flex items-center gap-3">
                   <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 text-white shadow-glow">
                     <Icon size={18} />
                   </div>
                   <div>
-                    <h3 className="font-display text-lg font-semibold">
+                    <h3 className="font-display text-lg font-semibold sm:text-xl">
                       {cat.title}
                     </h3>
                     <p className="text-xs text-slate-500 dark:text-slate-400">
                       {cat.description}
                     </p>
                   </div>
+                  <div className="ml-auto hidden h-px flex-1 bg-gradient-to-r from-slate-200 to-transparent dark:from-white/10 sm:block" />
                 </div>
 
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {cat.skills.map((s) => (
-                    <motion.span
-                      key={s}
-                      whileHover={{ scale: 1.06 }}
-                      className="chip border-brand-500/20 bg-gradient-to-r from-brand-500/5 to-accent-500/5 hover:border-brand-400"
-                    >
-                      {s}
-                    </motion.span>
+                <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 md:grid-cols-5 lg:grid-cols-6">
+                  {cat.skills.map((skill) => (
+                    <SkillTile key={skill} skill={skill} />
                   ))}
                 </div>
               </motion.div>

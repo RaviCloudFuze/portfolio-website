@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiArrowUpRight, FiGithub } from "react-icons/fi";
-import { SiLeetcode, SiHackerrank } from "react-icons/si";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
 import { codingProfiles } from "@/data/profiles";
@@ -11,7 +11,7 @@ import { codingProfiles } from "@/data/profiles";
 const ICON_MAP = {
   github: FiGithub,
   leetcode: SiLeetcode,
-  hackerrank: SiHackerrank,
+  codechef: SiCodechef,
 } as const;
 
 export default function Profiles() {

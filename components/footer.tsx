@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
-import { SiLeetcode, SiHackerrank } from "react-icons/si";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import { siteConfig } from "@/data/site";
 
 const socials = [
@@ -10,9 +10,9 @@ const socials = [
   { label: "LinkedIn", href: siteConfig.socials.linkedin, Icon: FiLinkedin },
   { label: "LeetCode", href: siteConfig.socials.leetcode, Icon: SiLeetcode },
   {
-    label: "HackerRank",
-    href: siteConfig.socials.hackerrank,
-    Icon: SiHackerrank,
+    label: "CodeChef",
+    href: siteConfig.socials.codechef,
+    Icon: SiCodechef,
   },
   { label: "Email", href: `mailto:${siteConfig.email}`, Icon: FiMail },
 ];
@@ -31,17 +31,18 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-3">
           {socials.map(({ label, href, Icon }) => (
             <Link
               key={label}
               href={href}
               aria-label={label}
+              title={label}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-brand-300"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white text-slate-700 transition-all hover:-translate-y-0.5 hover:scale-105 hover:border-brand-400 hover:text-brand-600 hover:shadow-[0_0_24px_-6px_rgba(99,102,241,0.7)] dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:text-brand-300"
             >
-              <Icon size={16} />
+              <Icon size={18} />
             </Link>
           ))}
         </div>

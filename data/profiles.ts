@@ -1,5 +1,5 @@
 export type CodingProfile = {
-  id: string;
+  id: "github" | "leetcode" | "codechef";
   name: string;
   handle: string;
   url: string;
@@ -11,25 +11,27 @@ export const codingProfiles: CodingProfile[] = [
   {
     id: "github",
     name: "GitHub",
-    handle: "@ravitejadudipalli",
-    url: "https://github.com/ravitejadudipalli",
-    description: "Open source contributions, side projects, and learning repos.",
-    stat: "60+ repos",
+    handle: "@dravitejachoudary6",
+    // TODO: replace with your real GitHub URL if different.
+    url: "https://github.com/RaviTejaDudipalli",
+    description:
+      "Side projects, backend experiments, and learning repos in Java & Spring Boot.",
   },
   {
     id: "leetcode",
     name: "LeetCode",
-    handle: "ravitejadudipalli",
-    url: "https://leetcode.com/ravitejadudipalli/",
-    description: "Daily problem solving — DS&A, SQL, and system design.",
-    stat: "500+ solved",
+    handle: "dravitejachoudary6",
+    url: "https://leetcode.com/u/dravitejachoudary6",
+    description:
+      "Sharpening DSA and problem-solving with regular practice.",
   },
   {
-    id: "hackerrank",
-    name: "HackerRank",
-    handle: "ravitejadudipalli",
-    url: "https://www.hackerrank.com/ravitejadudipalli",
-    description: "5-star in Problem Solving, Java and SQL tracks.",
-    stat: "5★ Java · SQL",
+    id: "codechef",
+    name: "CodeChef",
+    handle: "dravitejachoudary6",
+    // TODO: replace with your real CodeChef URL if different.
+    url: "https://www.codechef.com/users/ravitejad6",
+    description:
+      "Competitive programming — contest participation and archived solutions.",
   },
 ];

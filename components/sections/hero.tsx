@@ -9,7 +9,7 @@ import {
   FiLinkedin,
   FiMail,
 } from "react-icons/fi";
-import { SiLeetcode, SiHackerrank } from "react-icons/si";
+import { SiLeetcode, SiCodechef } from "react-icons/si";
 import { siteConfig } from "@/data/site";
 
 const socials = [
@@ -17,9 +17,9 @@ const socials = [
   { label: "LinkedIn", href: siteConfig.socials.linkedin, Icon: FiLinkedin },
   { label: "LeetCode", href: siteConfig.socials.leetcode, Icon: SiLeetcode },
   {
-    label: "HackerRank",
-    href: siteConfig.socials.hackerrank,
-    Icon: SiHackerrank,
+    label: "CodeChef",
+    href: siteConfig.socials.codechef,
+    Icon: SiCodechef,
   },
 ];
 
@@ -121,19 +121,29 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.55 }}
-            className="flex items-center gap-3 pt-2"
+            className="flex items-center gap-4 pt-2"
           >
             {socials.map(({ label, href, Icon }) => (
-              <Link
+              <motion.div
                 key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                className="group inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-200 bg-white/70 text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-brand-400 hover:text-brand-600 dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-brand-300"
+                whileHover={{ y: -3, scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 320, damping: 18 }}
               >
-                <Icon size={16} />
-              </Link>
+                <Link
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  title={label}
+                  className="group relative inline-flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 bg-white/80 text-slate-700 shadow-sm transition-colors hover:border-brand-400 hover:text-brand-600 hover:shadow-[0_0_28px_-6px_rgba(99,102,241,0.75)] dark:border-white/10 dark:bg-white/5 dark:text-slate-100 dark:hover:text-brand-300"
+                >
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-brand-500/0 to-accent-500/0 opacity-0 transition-opacity group-hover:from-brand-500/15 group-hover:to-accent-500/15 group-hover:opacity-100"
+                  />
+                  <Icon size={20} />
+                </Link>
+              </motion.div>
             ))}
           </motion.div>
         </div>

@@ -1,12 +1,48 @@
 "use client";
 
-import Image from "next/image";
+import * as React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { FiExternalLink, FiMapPin } from "react-icons/fi";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
+import { SkillPill } from "@/components/skill-icon";
 import { experiences } from "@/data/experience";
+
+/**
+ * Plain <img> so animated GIFs (e.g. Accenture logo) play, with a
+ * graceful fallback to a branded initial tile if the asset is missing.
+ */
+function CompanyLogo({
+  src,
+  alt,
+  fallbackChar,
+}: {
+  src: string;
+  alt: string;
+  fallbackChar: string;
+}) {
+  const [failed, setFailed] = React.useState(false);
+
+  if (failed) {
+    return (
+      <div className="flex h-full w-full items-center justify-center rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-lg font-bold text-white shadow-glow">
+        {fallbackChar}
+      </div>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={src}
+      alt={alt}
+      onError={() => setFailed(true)}
+      className="h-full w-full rounded-md object-contain transition-transform duration-500 group-hover:scale-110"
+      loading="lazy"
+    />
+  );
+}
 
 export default function Experience() {
   return (
@@ -40,14 +76,11 @@ export default function Experience() {
 
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div className="flex items-start gap-4">
-                    <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-white p-1.5 dark:border-white/10 dark:bg-white/5">
-                      <Image
+                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-slate-200 bg-white p-1.5 transition-transform dark:border-white/10 dark:bg-white/5">
+                      <CompanyLogo
                         src={exp.logo}
                         alt={`${exp.company} logo`}
-                        fill
-                        sizes="48px"
-                        className="object-contain"
-                        unoptimized
+                        fallbackChar={exp.company.charAt(0)}
                       />
                     </div>
                     <div>
@@ -97,11 +130,9 @@ export default function Experience() {
                   ))}
                 </ul>
 
-                <div className="mt-5 flex flex-wrap gap-1.5">
+                <div className="mt-5 flex flex-wrap gap-2">
                   {exp.stack.map((tech) => (
-                    <span key={tech} className="chip">
-                      {tech}
-                    </span>
+                    <SkillPill key={tech} skill={tech} />
                   ))}
                 </div>
               </div>
