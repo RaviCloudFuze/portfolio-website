@@ -84,11 +84,11 @@ export default function Experience() {
                       />
                     </div>
                     <div>
-                      <h3 className="font-display text-lg font-semibold leading-snug">
-                        {exp.role}{" "}
-                        <span className="text-slate-500 dark:text-slate-400">
-                          @
-                        </span>{" "}
+                      <h3 className="font-display text-lg font-semibold leading-snug sm:text-xl">
+                        {exp.role}
+                        <span className="mx-1.5 text-slate-400 dark:text-slate-500">
+                          —
+                        </span>
                         <Link
                           href={exp.website}
                           target="_blank"
@@ -114,23 +114,23 @@ export default function Experience() {
                   </div>
                 </div>
 
-                <p className="mt-4 text-sm text-slate-600 dark:text-slate-400">
+                <p className="mt-4 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
                   {exp.description}
                 </p>
 
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-5 space-y-3">
                   {exp.highlights.map((h) => (
                     <li
                       key={h}
-                      className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300"
+                      className="flex items-start gap-3 text-[0.95rem] leading-relaxed text-slate-700 dark:text-slate-300"
                     >
-                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-brand-500" />
-                      {h}
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-brand-500 to-accent-500" />
+                      <span>{h}</span>
                     </li>
                   ))}
                 </ul>
 
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-6 flex flex-wrap gap-2">
                   {exp.stack.map((tech) => (
                     <SkillPill key={tech} skill={tech} />
                   ))}

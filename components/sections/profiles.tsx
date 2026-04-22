@@ -36,31 +36,31 @@ export default function Profiles() {
                   rel="noopener noreferrer"
                   className="group relative block h-full"
                 >
-                  <div className="card flex h-full flex-col overflow-hidden p-6 transition-all group-hover:-translate-y-1 group-hover:border-brand-400/60 group-hover:shadow-glow">
+                  <div className="card flex h-full flex-col overflow-hidden p-7 transition-all group-hover:-translate-y-1.5 group-hover:scale-[1.02] group-hover:border-brand-400/60 group-hover:shadow-[0_0_48px_-10px_rgba(99,102,241,0.65)] sm:p-8">
                     <div
                       aria-hidden
-                      className="pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full bg-gradient-to-br from-brand-500/15 to-accent-500/15 opacity-0 blur-2xl transition-opacity group-hover:opacity-100"
+                      className="pointer-events-none absolute -right-14 -top-14 h-44 w-44 rounded-full bg-gradient-to-br from-brand-500/20 to-accent-500/20 opacity-0 blur-2xl transition-opacity group-hover:opacity-100"
                     />
                     <div className="flex items-center justify-between">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-800 dark:border-white/10 dark:bg-white/5 dark:text-slate-100">
-                        <Icon size={20} />
+                      <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 text-slate-800 shadow-sm transition-transform group-hover:scale-110 dark:border-white/10 dark:from-white/10 dark:to-white/5 dark:text-slate-100">
+                        <Icon size={30} />
                       </div>
                       <FiArrowUpRight
-                        size={18}
-                        className="text-slate-400 transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-500"
+                        size={22}
+                        className="text-slate-400 transition group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-brand-500"
                       />
                     </div>
-                    <h3 className="mt-5 font-display text-lg font-semibold">
+                    <h3 className="mt-6 font-display text-xl font-semibold sm:text-2xl">
                       {p.name}
                     </h3>
-                    <p className="mt-1 font-mono text-xs text-brand-600 dark:text-brand-300">
+                    <p className="mt-1.5 font-mono text-sm text-brand-600 dark:text-brand-300">
                       {p.handle}
                     </p>
-                    <p className="mt-3 text-sm text-slate-600 dark:text-slate-400">
+                    <p className="mt-3 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
                       {p.description}
                     </p>
                     {p.stat && (
-                      <span className="mt-5 inline-flex w-fit items-center rounded-full border border-brand-500/20 bg-brand-500/10 px-3 py-1 text-xs font-semibold text-brand-700 dark:text-brand-200">
+                      <span className="mt-6 inline-flex w-fit items-center rounded-full border border-brand-500/20 bg-brand-500/10 px-3.5 py-1.5 text-xs font-semibold text-brand-700 dark:text-brand-200">
                         {p.stat}
                       </span>
                     )}

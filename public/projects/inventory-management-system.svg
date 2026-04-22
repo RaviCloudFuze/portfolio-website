@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="Inventory Management System">
+  <defs>
+    <linearGradient id="inv-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#042f2e"/>
+      <stop offset="50%" stop-color="#0f766e"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="box-top" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.45)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0.15)"/>
+    </linearGradient>
+    <linearGradient id="box-accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <pattern id="inv-grid" width="48" height="48" patternUnits="userSpaceOnUse">
+      <path d="M 48 0 L 0 0 0 48" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#inv-bg)"/>
+  <rect width="1200" height="750" fill="url(#inv-grid)"/>
+
+  <!-- shelving platforms -->
+  <rect x="280" y="520" width="640" height="6" rx="3" fill="rgba(255,255,255,0.25)"/>
+  <rect x="280" y="360" width="640" height="6" rx="3" fill="rgba(255,255,255,0.18)"/>
+
+  <!-- boxes row 1 (lower) -->
+  <g>
+    <!-- box A -->
+    <rect x="300" y="400" width="120" height="120" rx="8" fill="url(#box-top)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+    <line x1="360" y1="400" x2="360" y2="520" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <rect x="315" y="420" width="90" height="10" rx="3" fill="rgba(255,255,255,0.55)"/>
+    <rect x="315" y="438" width="55" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
+
+    <!-- box B (featured / accent) -->
+    <rect x="440" y="400" width="120" height="120" rx="8" fill="url(#box-accent)" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+    <line x1="500" y1="400" x2="500" y2="520" stroke="rgba(0,0,0,0.2)" stroke-width="2"/>
+    <rect x="455" y="420" width="90" height="10" rx="3" fill="rgba(255,255,255,0.75)"/>
+    <rect x="455" y="438" width="55" height="6" rx="3" fill="rgba(0,0,0,0.25)"/>
+
+    <!-- box C -->
+    <rect x="580" y="400" width="120" height="120" rx="8" fill="url(#box-top)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+    <line x1="640" y1="400" x2="640" y2="520" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <rect x="595" y="420" width="90" height="10" rx="3" fill="rgba(255,255,255,0.55)"/>
+    <rect x="595" y="438" width="55" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
+
+    <!-- box D -->
+    <rect x="720" y="400" width="120" height="120" rx="8" fill="url(#box-top)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+    <line x1="780" y1="400" x2="780" y2="520" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+    <rect x="735" y="420" width="90" height="10" rx="3" fill="rgba(255,255,255,0.55)"/>
+    <rect x="735" y="438" width="55" height="6" rx="3" fill="rgba(255,255,255,0.3)"/>
+  </g>
+
+  <!-- boxes row 0 (upper) -->
+  <g opacity="0.85">
+    <rect x="370" y="240" width="120" height="120" rx="8" fill="url(#box-top)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+    <line x1="430" y1="240" x2="430" y2="360" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+
+    <rect x="510" y="240" width="120" height="120" rx="8" fill="url(#box-top)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+    <line x1="570" y1="240" x2="570" y2="360" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+
+    <rect x="650" y="240" width="120" height="120" rx="8" fill="url(#box-top)" stroke="rgba(255,255,255,0.45)" stroke-width="2"/>
+    <line x1="710" y1="240" x2="710" y2="360" stroke="rgba(0,0,0,0.15)" stroke-width="2"/>
+  </g>
+
+  <!-- scanner beam -->
+  <g opacity="0.9">
+    <rect x="880" y="180" width="12" height="360" rx="6" fill="rgba(251,191,36,0.5)"/>
+    <rect x="880" y="180" width="12" height="360" rx="6" fill="rgba(251,191,36,0.3)" filter="url(#blur)"/>
+  </g>
+
+  <!-- label -->
+  <text x="600" y="695" text-anchor="middle" font-family="-apple-system, Segoe UI, system-ui, sans-serif"
+        font-size="28" font-weight="700" fill="rgba(255,255,255,0.88)" letter-spacing="6">
+    INVENTORY MANAGEMENT SYSTEM
+  </text>
+</svg>

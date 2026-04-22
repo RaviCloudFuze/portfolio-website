@@ -15,8 +15,7 @@ export const projects: Project[] = [
     title: "Insurance Portal",
     description:
       "An insurance management platform that lets users explore, select, and claim policies. Implements policy management, eligibility verification, and claims processing to streamline client offerings and improve engagement.",
-    image:
-      "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=1200&q=80",
+    image: "/projects/insurance-portal.svg",
     stack: [
       "Java",
       "Spring Boot",
@@ -33,8 +32,7 @@ export const projects: Project[] = [
     title: "Inventory Management System",
     description:
       "A real-time inventory tracking system with order processing, supplier management, and detailed reporting. Reduces manual errors through automation and an intuitive interface.",
-    image:
-      "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=80",
+    image: "/projects/inventory-management-system.svg",
     stack: [
       "Java",
       "Spring Boot",

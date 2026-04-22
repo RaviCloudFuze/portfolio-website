@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { FiExternalLink, FiGithub } from "react-icons/fi";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
+import { SkillPill } from "@/components/skill-icon";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
@@ -23,9 +24,9 @@ export default function Projects() {
             <motion.article
               key={p.id}
               variants={staggerItem}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -6 }}
               transition={{ type: "spring", stiffness: 260, damping: 20 }}
-              className="card group flex h-full flex-col overflow-hidden"
+              className="card group flex h-full flex-col overflow-hidden transition-shadow hover:border-brand-400/60 hover:shadow-[0_0_48px_-12px_rgba(99,102,241,0.55)]"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
@@ -33,9 +34,9 @@ export default function Projects() {
                   alt={p.title}
                   fill
                   sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent opacity-60 transition-opacity group-hover:opacity-80" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-70 transition-opacity group-hover:opacity-90" />
                 {p.featured && (
                   <span className="absolute left-3 top-3 rounded-full bg-gradient-to-r from-brand-500 to-accent-500 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white shadow-glow">
                     Featured
@@ -67,18 +68,16 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="font-display text-lg font-semibold">
+              <div className="flex flex-1 flex-col p-5 sm:p-6">
+                <h3 className="font-display text-lg font-semibold sm:text-xl">
                   {p.title}
                 </h3>
-                <p className="mt-2 text-sm text-slate-600 dark:text-slate-400">
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-slate-600 dark:text-slate-400">
                   {p.description}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
+                <div className="mt-4 flex flex-wrap gap-2">
                   {p.stack.map((t) => (
-                    <span key={t} className="chip">
-                      {t}
-                    </span>
+                    <SkillPill key={t} skill={t} />
                   ))}
                 </div>
                 <div className="mt-5 flex items-center gap-3 pt-2 text-sm">

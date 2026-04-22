@@ -34,35 +34,29 @@ import {
   FiZap,
   FiTrendingUp,
   FiBox,
-  FiCloud,
   FiCode,
 } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 
+/** react-icons component per skill */
 const ICON_MAP: Record<string, IconType> = {
-  // Languages
   Java: FaJava,
   JavaScript: SiJavascript,
   TypeScript: SiTypescript,
-  // Backend
   "Spring Boot": SiSpringboot,
   "Spring MVC": SiSpring,
   "Spring Security": FiShield,
   "JPA / Hibernate": SiHibernate,
   Hibernate: SiHibernate,
-  // APIs / services
   "REST APIs": TbApi,
   "Rest API's": TbApi,
   Microservices: FiBox,
-  // Principles
   OOPS: FiLayers,
   "SOLID Principles": FiAward,
   "Design Patterns": FiGrid,
-  // Databases
   SQL: FiDatabase,
   MySQL: SiMysql,
   MongoDB: SiMongodb,
-  // DevOps / tools
   Git: SiGit,
   Maven: SiApachemaven,
   Gradle: SiGradle,
@@ -73,33 +67,76 @@ const ICON_MAP: Record<string, IconType> = {
   Postman: SiPostman,
   Kafka: SiApachekafka,
   "Kafka (familiar)": SiApachekafka,
-  // Cloud
   "Google Cloud Platform": SiGooglecloud,
   GCP: SiGooglecloud,
   AWS: SiAmazonaws,
   "Google Apps Script": SiGoogle,
-  // Certifications
   "GCP — Cloud Digital Leader (Certified)": FiAward,
   "GCP — Associate Cloud Engineer (Certified)": FiAward,
-  // Methodology
   "Agile / Scrum": FiTrendingUp,
 };
+
+/**
+ * Brand-accurate colors. Each chosen for contrast on both light and dark
+ * backgrounds (no pure-black / pure-white brands — we adjust those).
+ */
+const COLOR_MAP: Record<string, string> = {
+  Java: "#f89820",
+  JavaScript: "#f7df1e",
+  TypeScript: "#3178c6",
+  "Spring Boot": "#6db33f",
+  "Spring MVC": "#6db33f",
+  "Spring Security": "#6db33f",
+  "JPA / Hibernate": "#bcae79",
+  Hibernate: "#bcae79",
+  "REST APIs": "#6366f1",
+  "Rest API's": "#6366f1",
+  Microservices: "#8b5cf6",
+  OOPS: "#a78bfa",
+  "SOLID Principles": "#eab308",
+  "Design Patterns": "#3b82f6",
+  SQL: "#00758f",
+  MySQL: "#00758f",
+  MongoDB: "#47a248",
+  Git: "#f05032",
+  Maven: "#c71a36",
+  Gradle: "#0fa7e0",
+  Jenkins: "#d33833",
+  "CI / CD": "#2088ff",
+  Docker: "#2496ed",
+  Kubernetes: "#326ce5",
+  Postman: "#ff6c37",
+  Kafka: "#94a3b8",
+  "Kafka (familiar)": "#94a3b8",
+  "Google Cloud Platform": "#4285f4",
+  GCP: "#4285f4",
+  AWS: "#ff9900",
+  "Google Apps Script": "#4285f4",
+  "GCP — Cloud Digital Leader (Certified)": "#eab308",
+  "GCP — Associate Cloud Engineer (Certified)": "#eab308",
+  "Agile / Scrum": "#0ea5e9",
+};
+
+const DEFAULT_COLOR = "#6366f1";
 
 function iconFor(skill: string): IconType {
   return ICON_MAP[skill] ?? FiCode;
 }
+function colorFor(skill: string): string {
+  return COLOR_MAP[skill] ?? DEFAULT_COLOR;
+}
 
 const SIZES = {
-  sm: { box: "h-8 w-8", icon: 15 },
-  md: { box: "h-12 w-12", icon: 22 },
-  lg: { box: "h-14 w-14", icon: 26 },
+  sm: { box: "h-9 w-9", icon: 17 },
+  md: { box: "h-14 w-14", icon: 26 },
+  lg: { box: "h-16 w-16", icon: 30 },
 } as const;
 
 type Size = keyof typeof SIZES;
 
 /**
  * Big tile — used in the Skills grid.
- * Icon lives inside a rounded square; name sits below.
+ * Colored icon in a tinted container; name below.
  */
 export function SkillTile({
   skill,
@@ -111,26 +148,29 @@ export function SkillTile({
   className?: string;
 }) {
   const Icon = iconFor(skill);
+  const color = colorFor(skill);
   const s = SIZES[size];
 
   return (
     <motion.div
-      whileHover={{ y: -4, scale: 1.04 }}
-      transition={{ type: "spring", stiffness: 280, damping: 20 }}
+      whileHover={{ y: -5, scale: 1.05 }}
+      transition={{ type: "spring", stiffness: 300, damping: 18 }}
       className={cn(
-        "group relative flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition-colors hover:border-brand-400/60 hover:shadow-[0_0_40px_-12px_rgba(99,102,241,0.65)] dark:border-white/10 dark:bg-white/5",
+        "group relative flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition-colors hover:border-brand-400/60 hover:shadow-[0_0_40px_-12px_rgba(99,102,241,0.6)] dark:border-white/10 dark:bg-white/5",
         className,
       )}
+      style={{ ["--tile-color" as string]: color }}
     >
       <div
         className={cn(
-          "inline-flex items-center justify-center rounded-xl bg-gradient-to-br from-brand-500/10 to-accent-500/10 text-brand-600 transition-all group-hover:from-brand-500 group-hover:to-accent-500 group-hover:text-white group-hover:shadow-glow dark:text-brand-300",
+          "inline-flex items-center justify-center rounded-xl transition-transform group-hover:scale-110",
           s.box,
         )}
+        style={{ backgroundColor: `${color}1F`, color }}
       >
         <Icon size={s.icon} />
       </div>
-      <span className="text-xs font-medium leading-tight text-slate-800 sm:text-sm dark:text-slate-200">
+      <span className="text-xs font-semibold leading-tight text-slate-800 sm:text-sm dark:text-slate-200">
         {skill}
       </span>
     </motion.div>
@@ -138,8 +178,8 @@ export function SkillTile({
 }
 
 /**
- * Small inline pill — used inside Experience cards for tech stack chips.
- * Shows the icon + name on one line.
+ * Inline pill — used inside Experience / Project cards for tech stack chips.
+ * Colored icon sits to the left of the label.
  */
 export function SkillPill({
   skill,
@@ -149,18 +189,23 @@ export function SkillPill({
   className?: string;
 }) {
   const Icon = iconFor(skill);
+  const color = colorFor(skill);
+
   return (
-    <span
+    <motion.span
+      whileHover={{ y: -2, scale: 1.04 }}
+      transition={{ type: "spring", stiffness: 320, damping: 20 }}
       className={cn(
-        "group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-2.5 py-1 text-xs font-medium text-slate-700 backdrop-blur transition-all hover:-translate-y-0.5 hover:border-brand-400/60 hover:text-brand-700 hover:shadow-[0_0_18px_-8px_rgba(99,102,241,0.7)] dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-brand-200",
+        "group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-[0.8rem] font-medium text-slate-700 backdrop-blur transition-colors hover:border-brand-400/60 hover:text-slate-900 hover:shadow-[0_0_20px_-6px_rgba(99,102,241,0.7)] dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-white",
         className,
       )}
     >
       <Icon
-        size={13}
-        className="shrink-0 text-brand-500 transition group-hover:scale-110 dark:text-brand-300"
+        size={15}
+        style={{ color }}
+        className="shrink-0 transition-transform group-hover:scale-110"
       />
       {skill}
-    </span>
+    </motion.span>
   );
 }
