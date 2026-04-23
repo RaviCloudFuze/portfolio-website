@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { IconType } from "react-icons";
 import {
   FiCode,
   FiLayers,
@@ -8,20 +9,17 @@ import {
   FiBriefcase,
   FiMonitor,
 } from "react-icons/fi";
-import type { IconBaseProps } from "react-icons";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
 import { skillCategories } from "@/data/skills";
 import { SkillTile } from "@/components/skill-icon";
 
-type IconRenderer = (p: IconBaseProps) => JSX.Element;
-
-const ICON_MAP: Record<string, IconRenderer> = {
-  languages: (p) => <FiCode {...p} />,
-  frameworks: (p) => <FiLayers {...p} />,
-  tools: (p) => <FiSettings {...p} />,
-  current: (p) => <FiBriefcase {...p} />,
-  ide: (p) => <FiMonitor {...p} />,
+const ICON_MAP: Record<string, IconType> = {
+  languages: FiCode,
+  frameworks: FiLayers,
+  tools: FiSettings,
+  current: FiBriefcase,
+  ide: FiMonitor,
 };
 
 export default function Skills() {

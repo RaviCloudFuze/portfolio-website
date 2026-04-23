@@ -37,9 +37,31 @@ import {
   FiTrendingUp,
   FiBox,
   FiCode,
-  FiMousePointer,
 } from "react-icons/fi";
 import { cn } from "@/lib/utils";
+
+/** Inline Cursor AI logo — mirrors /public/icons/cursor.svg so it can inherit
+ *  `currentColor` for brand tinting inside SkillTile / SkillPill. */
+const CursorIcon: IconType = (props) => {
+  const { size = "1em", color, title, ...rest } = props;
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      fill={color ?? "currentColor"}
+      xmlns="http://www.w3.org/2000/svg"
+      {...rest}
+    >
+      {title && <title>{title}</title>}
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M11.925 1.5l9.95 5.75v11.5l-9.95 5.75L1.975 18.75V7.25l9.95-5.75zm0 2.02L4.25 8.3v7.4l7.675 4.78 7.675-4.78V8.3L11.925 3.52zm0 2.12l5.95 3.42v6.88l-5.95 3.42-5.95-3.42V9.06l5.95-3.42zm0 2.12l-3.7 2.13v4.26l3.7 2.13 3.7-2.13v-4.26l-3.7-2.13z"
+      />
+    </svg>
+  );
+};
 
 const ICON_MAP: Record<string, IconType> = {
   Java: FaJava,
@@ -78,7 +100,7 @@ const ICON_MAP: Record<string, IconType> = {
   "Agile / Scrum": FiTrendingUp,
   "IntelliJ IDEA": SiIntellijidea,
   "VS Code": TbBrandVscode,
-  Cursor: FiMousePointer,
+  Cursor: CursorIcon,
   "Android Studio": SiAndroidstudio,
 };
 
@@ -119,7 +141,7 @@ const COLOR_MAP: Record<string, string> = {
   "Agile / Scrum": "#0ea5e9",
   "IntelliJ IDEA": "#fe4a56",
   "VS Code": "#007acc",
-  Cursor: "#94a3b8",
+  Cursor: "#d4d4d8",
   "Android Studio": "#3ddc84",
 };
 
@@ -161,7 +183,6 @@ export function SkillTile({
         "group relative flex flex-col items-center justify-center gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 text-center shadow-sm backdrop-blur transition-colors hover:border-brand-400/60 hover:shadow-[0_0_40px_-12px_rgba(99,102,241,0.6)] dark:border-white/10 dark:bg-white/5",
         className,
       )}
-      style={{ ["--tile-color" as string]: color }}
     >
       <div
         className={cn(
@@ -194,12 +215,12 @@ export function SkillPill({
       whileHover={{ y: -2, scale: 1.04 }}
       transition={{ type: "spring", stiffness: 320, damping: 20 }}
       className={cn(
-        "group inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white/80 px-3 py-1.5 text-[0.8rem] font-medium text-slate-700 backdrop-blur transition-colors hover:border-brand-400/60 hover:text-slate-900 hover:shadow-[0_0_20px_-6px_rgba(99,102,241,0.7)] dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-white",
+        "group inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-base font-medium text-slate-700 backdrop-blur transition-colors hover:border-brand-400/60 hover:text-slate-900 hover:shadow-[0_0_20px_-6px_rgba(99,102,241,0.7)] dark:border-white/10 dark:bg-white/5 dark:text-slate-200 dark:hover:text-white",
         className,
       )}
     >
       <Icon
-        size={15}
+        size={18}
         style={{ color }}
         className="shrink-0 transition-transform group-hover:scale-110"
       />

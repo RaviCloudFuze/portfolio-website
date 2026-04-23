@@ -1,26 +1,34 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   FiArrowDown,
   FiDownload,
   FiGithub,
-  FiLinkedin,
   FiMail,
 } from "react-icons/fi";
-import { SiLeetcode, SiCodechef } from "react-icons/si";
+import { SiLeetcode, SiCodechef, SiLinkedin } from "react-icons/si";
 import { siteConfig } from "@/data/site";
 
-const socials = [
+type Social = {
+  label: string;
+  href: string;
+  Icon: React.ComponentType<{ size?: number; style?: React.CSSProperties }>;
+  brandColor?: string;
+};
+
+const socials: Social[] = [
   { label: "GitHub", href: siteConfig.socials.github, Icon: FiGithub },
-  { label: "LinkedIn", href: siteConfig.socials.linkedin, Icon: FiLinkedin },
-  { label: "LeetCode", href: siteConfig.socials.leetcode, Icon: SiLeetcode },
   {
-    label: "CodeChef",
-    href: siteConfig.socials.codechef,
-    Icon: SiCodechef,
+    label: "LinkedIn",
+    href: siteConfig.socials.linkedin,
+    Icon: SiLinkedin,
+    brandColor: "#0A66C2",
   },
+  { label: "LeetCode", href: siteConfig.socials.leetcode, Icon: SiLeetcode },
+  { label: "CodeChef", href: siteConfig.socials.codechef, Icon: SiCodechef },
 ];
 
 export default function Hero() {
@@ -44,11 +52,36 @@ export default function Hero() {
       </div>
 
       <div className="container-page">
-        <div className="flex flex-col items-start gap-8">
+        <div className="flex flex-col items-start gap-6 sm:gap-8">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            <motion.div
+              whileHover={{ scale: 1.08 }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+              className="origin-center"
+            >
+              <div className="relative h-28 w-28 overflow-hidden rounded-full bg-slate-100 ring-2 ring-brand-500/40 shadow-[0_10px_40px_-10px_rgba(15,23,42,0.5)] transition-shadow duration-300 hover:shadow-[0_0_60px_-10px_rgba(99,102,241,0.75)] sm:h-36 sm:w-36 lg:h-44 lg:w-44 dark:bg-slate-800 dark:ring-brand-400/40">
+                <Image
+                  src="/company-logos/myself.jpg"
+                  alt={siteConfig.name}
+                  width={480}
+                  height={480}
+                  quality={100}
+                  priority
+                  className="h-full w-full scale-[1.45] select-none object-cover"
+                  style={{ objectPosition: "50% 42%" }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
           <motion.span
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, delay: 0.05 }}
             className="chip gap-2 border-brand-500/30 bg-brand-500/10 text-brand-700 dark:text-brand-200"
           >
             <span className="relative flex h-2 w-2">
@@ -135,7 +168,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.55 }}
             className="flex items-center gap-4 pt-2"
           >
-            {socials.map(({ label, href, Icon }) => (
+            {socials.map(({ label, href, Icon, brandColor }) => (
               <motion.div
                 key={label}
                 whileHover={{ y: -3, scale: 1.08 }}
@@ -153,7 +186,10 @@ export default function Hero() {
                     aria-hidden
                     className="pointer-events-none absolute inset-0 rounded-full bg-gradient-to-br from-brand-500/0 to-accent-500/0 opacity-0 transition-opacity group-hover:from-brand-500/15 group-hover:to-accent-500/15 group-hover:opacity-100"
                   />
-                  <Icon size={20} />
+                  <Icon
+                    size={20}
+                    style={brandColor ? { color: brandColor } : undefined}
+                  />
                 </Link>
               </motion.div>
             ))}

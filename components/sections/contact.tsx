@@ -5,14 +5,13 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   FiCheckCircle,
-  FiLinkedin,
   FiMail,
   FiPaperclip,
   FiPhone,
   FiSend,
   FiX,
 } from "react-icons/fi";
-import { SiWhatsapp } from "react-icons/si";
+import { SiLinkedin, SiWhatsapp } from "react-icons/si";
 import SectionHeading from "@/components/section-heading";
 import { siteConfig } from "@/data/site";
 
@@ -132,10 +131,10 @@ export default function Contact() {
                 href={siteConfig.socials.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium transition-all hover:-translate-y-0.5 hover:border-[#0a66c2]/60 hover:text-[#0a66c2] hover:shadow-[0_0_22px_-6px_rgba(10,102,194,0.55)] dark:border-white/10 dark:bg-white/5 dark:hover:text-[#4aa3f0]"
+                className="group inline-flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-base font-medium transition-all hover:-translate-y-0.5 hover:border-[#0A66C2]/60 hover:text-[#0A66C2] hover:shadow-[0_0_22px_-6px_rgba(10,102,194,0.55)] dark:border-white/10 dark:bg-white/5"
               >
-                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#0a66c2]/10 text-[#0a66c2] dark:text-[#4aa3f0]">
-                  <FiLinkedin size={19} />
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-[#0A66C2]/10 text-[#0A66C2]">
+                  <SiLinkedin size={19} />
                 </span>
                 <span>Message me on LinkedIn</span>
               </Link>

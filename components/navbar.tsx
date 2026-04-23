@@ -1,12 +1,10 @@
 "use client";
 
 import * as React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import { navLinks } from "@/data/navigation";
-import { siteConfig } from "@/data/site";
 import ThemeToggle from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
@@ -52,53 +50,44 @@ export default function Navbar() {
       )}
     >
       <nav className="container-page flex h-16 items-center justify-between">
-        <Link href="#home" aria-label={`${siteConfig.name} — Home`} className="inline-block">
-          <motion.div
-            whileHover={{ scale: 2 }}
-            transition={{ duration: 0.35, ease: [0.4, 0, 0.2, 1] }}
-            className="relative origin-left"
-          >
-            <div className="relative h-10 w-10 overflow-hidden rounded-full bg-slate-100 ring-2 ring-brand-500/40 shadow-[0_4px_14px_-2px_rgba(15,23,42,0.25)] transition-shadow duration-300 hover:shadow-[0_0_36px_-4px_rgba(99,102,241,0.75)] dark:bg-slate-800 dark:ring-brand-400/40">
-              <Image
-                src="/company-logos/myself.jpg"
-                alt={siteConfig.name}
-                width={80}
-                height={80}
-                quality={95}
-                priority
-                className="h-full w-full select-none object-cover"
-              />
-            </div>
-          </motion.div>
+        <Link
+          href="#home"
+          aria-label="Home"
+          className="group inline-flex items-center"
+        >
+          <span className="inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 font-display text-sm font-bold text-white shadow-glow transition-transform group-hover:scale-110">
+            R
+          </span>
         </Link>
 
-        <ul className="hidden items-center gap-1 md:flex">
-          {navLinks.map((link) => (
-            <li key={link.id}>
-              <Link
-                href={link.href}
-                className={cn(
-                  "relative rounded-full px-3 py-1.5 text-sm font-medium transition",
-                  active === link.id
-                    ? "text-brand-600 dark:text-brand-300"
-                    : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white",
-                )}
-              >
-                {active === link.id && (
-                  <motion.span
-                    layoutId="nav-pill"
-                    className="absolute inset-0 -z-10 rounded-full bg-brand-500/10 dark:bg-brand-400/10"
-                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
-                  />
-                )}
-                {link.label}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
         <div className="flex items-center gap-2">
+          <ul className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => (
+              <li key={link.id}>
+                <Link
+                  href={link.href}
+                  className={cn(
+                    "relative rounded-full px-3 py-1.5 text-sm font-medium transition",
+                    active === link.id
+                      ? "text-brand-600 dark:text-brand-300"
+                      : "text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white",
+                  )}
+                >
+                  {active === link.id && (
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 -z-10 rounded-full bg-brand-500/10 dark:bg-brand-400/10"
+                      transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
           <ThemeToggle />
+
           <button
             type="button"
             aria-label="Toggle menu"
