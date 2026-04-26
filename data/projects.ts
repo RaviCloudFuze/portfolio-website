@@ -24,7 +24,7 @@ export const projects: Project[] = [
       "REST APIs",
       "MySQL",
     ],
-    github: "https://github.com/RaviTejaDudipalli/insurance-portal",
+    github: "https://github.com/RaviTejaDudipalli/insurance-management-system",
     featured: true,
   },
   {

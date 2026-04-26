@@ -21,10 +21,10 @@
 
 ## 🌐 Live Demo
 
-> **Visit:** [https://your-portfolio-url.vercel.app](https://your-portfolio-url.vercel.app)
+> **Visit:** [https://ravitejad-portfolio-website.vercel.app](https://ravitejad-portfolio-website.vercel.app)
 
 <p align="center">
-  <img src="./public/preview.png" alt="Portfolio preview" width="100%" />
+  <img src="./public/Preview.png" alt="Portfolio preview" width="100%" />
 </p>
 
 ---
@@ -115,7 +115,7 @@ portfolio-website/
 │
 ├── public/
 │   ├── company-logos/       # Company logos + profile photo
-│   ├── icons/               # Brand-icon SVGs (e.g. cursor.svg)
+│   ├── icons/               # Brand icons (e.g. cursor_style_animation.gif)
 │   ├── projects/            # Project cover art
 │   └── resume.pdf           # ← drop your real resume here
 │
@@ -204,10 +204,10 @@ Add a custom domain under **Project → Settings → Domains**. Done.
 
 ## 📸 Preview
 
-> Add a screenshot at `public/preview.png` and it will render here automatically.
+> Add a screenshot at `public/Preview.png` and it will render here automatically.
 
 <p align="center">
-  <img src="./public/preview.png" alt="Portfolio preview" width="100%" />
+  <img src="./public/Preview.png" alt="Portfolio preview" width="100%" />
 </p>
 
 ---

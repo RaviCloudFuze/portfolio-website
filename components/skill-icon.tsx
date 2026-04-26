@@ -40,26 +40,19 @@ import {
 } from "react-icons/fi";
 import { cn } from "@/lib/utils";
 
-/** Inline Cursor AI logo — mirrors /public/icons/cursor.svg so it can inherit
- *  `currentColor` for brand tinting inside SkillTile / SkillPill. */
+/** Cursor AI logo — animated GIF served from /public/icons. Rendered as an
+ *  <img> so the animation plays; satisfies IconType's signature for the
+ *  ICON_MAP. The size prop maps to width/height in px. */
 const CursorIcon: IconType = (props) => {
-  const { size = "1em", color, title, ...rest } = props;
+  const { size = "1em", title, className } = props;
+  const dim = typeof size === "number" ? `${size}px` : size;
   return (
-    <svg
-      viewBox="0 0 24 24"
-      width={size}
-      height={size}
-      fill={color ?? "currentColor"}
-      xmlns="http://www.w3.org/2000/svg"
-      {...rest}
-    >
-      {title && <title>{title}</title>}
-      <path
-        fillRule="evenodd"
-        clipRule="evenodd"
-        d="M11.925 1.5l9.95 5.75v11.5l-9.95 5.75L1.975 18.75V7.25l9.95-5.75zm0 2.02L4.25 8.3v7.4l7.675 4.78 7.675-4.78V8.3L11.925 3.52zm0 2.12l5.95 3.42v6.88l-5.95 3.42-5.95-3.42V9.06l5.95-3.42zm0 2.12l-3.7 2.13v4.26l3.7 2.13 3.7-2.13v-4.26l-3.7-2.13z"
-      />
-    </svg>
+    <img
+      src="/icons/cursor_style_animation.gif"
+      alt={title ?? "Cursor"}
+      className={className as string | undefined}
+      style={{ width: dim, height: dim, objectFit: "contain" }}
+    />
   );
 };
 
