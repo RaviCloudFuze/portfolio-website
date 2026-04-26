@@ -4,8 +4,8 @@ export const siteConfig = {
   tagline:
     "Result-oriented backend engineer with 3+ years building scalable microservices, REST APIs, and data-driven systems in Java and Spring Boot. I care about performance, clean code, and shipping end-to-end.",
   location: "Hyderabad, India",
-  email: "dravitejachoudary6@gmail.com",
-  phone: "+91 9121812902",
+  email: "ravitejachoudary6@gmail.com",
+  phone: "+91 7993498259",
   url: "https://raviteja.dev",
   resumeUrl: "/resume.pdf",
   socials: {
