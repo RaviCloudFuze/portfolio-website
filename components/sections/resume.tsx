@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import {
   FiAlertCircle,
+  FiArrowDown,
   FiDownload,
   FiExternalLink,
   FiFileText,
@@ -22,12 +23,26 @@ const snapshotBullets = [
 
 export default function Resume() {
   const [pdfFailed, setPdfFailed] = React.useState(false);
+  const [pageCount, setPageCount] = React.useState<number | null>(null);
 
   React.useEffect(() => {
     let cancelled = false;
-    fetch(siteConfig.resumeUrl, { method: "HEAD" })
+    fetch(siteConfig.resumeUrl)
       .then((r) => {
-        if (!cancelled && !r.ok) setPdfFailed(true);
+        if (!r.ok) {
+          if (!cancelled) setPdfFailed(true);
+          return null;
+        }
+        return r.arrayBuffer();
+      })
+      .then((buf) => {
+        if (!buf || cancelled) return;
+        // Best-effort page count from raw PDF bytes. Counts uncompressed page
+        // objects via /Type /Page (excluding /Pages). Falls back to 1 if the
+        // PDF uses compressed object streams; affordance simply won't render.
+        const text = new TextDecoder("latin1").decode(new Uint8Array(buf));
+        const matches = text.match(/\/Type\s*\/Page[^s]/g);
+        setPageCount(matches?.length ?? 1);
       })
       .catch(() => {
         if (!cancelled) setPdfFailed(true);
@@ -36,6 +51,8 @@ export default function Resume() {
       cancelled = true;
     };
   }, []);
+
+  const isMultiPage = pageCount !== null && pageCount > 1;
 
   return (
     <section id="resume" className="section bg-[rgb(var(--bg-alt))]/60">
@@ -66,7 +83,10 @@ export default function Resume() {
               </div>
             </div>
 
-            {/* Aspect tuned to US-Letter (8.5 x 11) so the page fits cleanly without cropping */}
+            {/* Aspect tuned to US-Letter (8.5 x 11) so a single page fits cleanly
+                without cropping. For multi-page PDFs, the browser's native PDF
+                viewer inside the iframe handles vertical scroll, and a floating
+                pill below cues the user that more pages are available. */}
             <div className="relative flex aspect-[8.5/11] w-full items-center justify-center overflow-hidden bg-slate-100 dark:bg-slate-900">
               {pdfFailed ? (
                 <div className="flex h-full flex-col items-center justify-center gap-4 p-8 text-center">
@@ -94,12 +114,37 @@ export default function Resume() {
                   </Link>
                 </div>
               ) : (
-                <iframe
-                  src={`${siteConfig.resumeUrl}#view=FitH&toolbar=0&navpanes=0&pagemode=none`}
-                  title={`${siteConfig.name} resume`}
-                  className="absolute inset-0 block h-full w-full border-0"
-                  loading="lazy"
-                />
+                <>
+                  <iframe
+                    src={`${siteConfig.resumeUrl}#view=FitH&toolbar=0&navpanes=0&pagemode=none`}
+                    title={`${siteConfig.name} resume`}
+                    className="absolute inset-0 block h-full w-full border-0"
+                    loading="lazy"
+                  />
+                  {isMultiPage && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.4, delay: 0.6 }}
+                      className="pointer-events-none absolute bottom-3 right-3 z-10"
+                    >
+                      <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-900/85 px-3 py-1.5 text-xs font-medium text-white shadow-lg ring-1 ring-white/10 backdrop-blur">
+                        <motion.span
+                          animate={{ y: [0, 3, 0] }}
+                          transition={{
+                            duration: 1.6,
+                            repeat: Infinity,
+                            ease: "easeInOut",
+                          }}
+                          className="inline-flex"
+                        >
+                          <FiArrowDown size={12} />
+                        </motion.span>
+                        {pageCount} pages · scroll inside
+                      </span>
+                    </motion.div>
+                  )}
+                </>
               )}
             </div>
           </motion.div>
