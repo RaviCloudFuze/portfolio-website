@@ -2,17 +2,18 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FiArrowUpRight, FiGithub } from "react-icons/fi";
-import { SiLeetcode, SiCodechef } from "react-icons/si";
+import { FiArrowUpRight } from "react-icons/fi";
+import { SiGithub, SiLeetcode, SiCodechef } from "react-icons/si";
+import type { IconType } from "react-icons";
 import SectionHeading from "@/components/section-heading";
 import { Stagger, staggerItem } from "@/components/animated";
 import { codingProfiles } from "@/data/profiles";
 
-const ICON_MAP = {
-  github: FiGithub,
-  leetcode: SiLeetcode,
-  codechef: SiCodechef,
-} as const;
+const ICON_MAP: Record<string, { Icon: IconType; brandColor?: string }> = {
+  github: { Icon: SiGithub },
+  leetcode: { Icon: SiLeetcode, brandColor: "#FFA116" },
+  codechef: { Icon: SiCodechef, brandColor: "#8B6F47" },
+};
 
 export default function Profiles() {
   return (
@@ -26,8 +27,8 @@ export default function Profiles() {
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {codingProfiles.map((p) => {
-            const Icon =
-              ICON_MAP[p.id as keyof typeof ICON_MAP] ?? FiGithub;
+            const entry = ICON_MAP[p.id] ?? { Icon: SiGithub };
+            const { Icon, brandColor } = entry;
             return (
               <motion.div key={p.id} variants={staggerItem}>
                 <Link
@@ -43,7 +44,10 @@ export default function Profiles() {
                     />
                     <div className="flex items-center justify-between">
                       <div className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-slate-200 bg-gradient-to-br from-white to-slate-50 text-slate-800 shadow-sm transition-transform group-hover:scale-110 dark:border-white/10 dark:from-white/10 dark:to-white/5 dark:text-slate-100">
-                        <Icon size={30} />
+                        <Icon
+                          size={30}
+                          style={brandColor ? { color: brandColor } : undefined}
+                        />
                       </div>
                       <FiArrowUpRight
                         size={22}

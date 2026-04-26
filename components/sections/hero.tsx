@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { FiArrowDown, FiDownload, FiMail } from "react-icons/fi";
 import {
-  FiArrowDown,
-  FiDownload,
-  FiGithub,
-  FiMail,
-} from "react-icons/fi";
-import { SiLeetcode, SiCodechef, SiLinkedin } from "react-icons/si";
+  SiGithub,
+  SiLeetcode,
+  SiCodechef,
+  SiLinkedin,
+} from "react-icons/si";
 import { siteConfig } from "@/data/site";
 
 type Social = {
@@ -20,15 +20,25 @@ type Social = {
 };
 
 const socials: Social[] = [
-  { label: "GitHub", href: siteConfig.socials.github, Icon: FiGithub },
+  { label: "GitHub", href: siteConfig.socials.github, Icon: SiGithub },
   {
     label: "LinkedIn",
     href: siteConfig.socials.linkedin,
     Icon: SiLinkedin,
     brandColor: "#0A66C2",
   },
-  { label: "LeetCode", href: siteConfig.socials.leetcode, Icon: SiLeetcode },
-  { label: "CodeChef", href: siteConfig.socials.codechef, Icon: SiCodechef },
+  {
+    label: "LeetCode",
+    href: siteConfig.socials.leetcode,
+    Icon: SiLeetcode,
+    brandColor: "#FFA116",
+  },
+  {
+    label: "CodeChef",
+    href: siteConfig.socials.codechef,
+    Icon: SiCodechef,
+    brandColor: "#8B6F47",
+  },
 ];
 
 export default function Hero() {
