@@ -41,7 +41,7 @@ export const projects: Project[] = [
       "Maven",
       "Postman",
     ],
-    github: "https://github.com/RaviTejaDudipalli/inventory-management-system",
+    github: "https://github.com/RaviTejaDudipalli/IMS",
     featured: true,
   },
 ];
