@@ -21,7 +21,7 @@ export const projects: Project[] = [
       "Standard Controller → Service → Repository layering; auth and role-based access via Spring Security.",
       "Modeled the schema for policy versioning and claim state transitions so historical claims stay queryable through schema evolution.",
       "Used JPA projections and indexed lookups on hot read paths (policy search, claim status) to keep response times stable as the dataset grows.",
-      "Validation, exception handling, and audit logging at the service layer — controllers stay thin and testable.",
+      "Validation, exception handling, and audit logging at the service layer so that controllers stay thin and testable.",
     ],
     image: "/projects/insurance-portal.svg",
     stack: [
@@ -41,7 +41,7 @@ export const projects: Project[] = [
     description:
       "Real-time inventory and order-processing system with supplier management and reporting for SMB warehouses.",
     bullets: [
-      "REST APIs for inventory, orders, suppliers, and reports — each with its own service boundary so changes don't cascade.",
+      "REST APIs for inventory, orders, suppliers, and reports, each with its own service boundary so changes don't cascade.",
       "Concurrency-aware stock updates using transactional writes and optimistic locking to prevent overselling on simultaneous orders.",
       "Schema designed for report-heavy reads with composite indexes on (product_id, created_at) for stock-movement and order-history queries.",
       "Explicit order state machine (PLACED → PACKED → SHIPPED → DELIVERED / CANCELLED) instead of a free-text status column.",

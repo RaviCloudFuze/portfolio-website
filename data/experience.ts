@@ -14,8 +14,8 @@ export type Experience = {
 export const experiences: Experience[] = [
   {
     id: "neutara",
-    company: "CloudFuze (Subsidiary of Neutara Technologies)",
-    role: "Senior Software Engineer/Senior Product Engineer",
+    company: "CloudFuze (Neutara Technologies)",
+    role: "Senior Product Engineer",
     duration: "Dec 2025 – Present",
     location: "Hyderabad, India",
     website: "https://www.cloudfuze.com/",
@@ -56,7 +56,7 @@ export const experiences: Experience[] = [
     description:
       "Worked on the Google Flight Search project, writing clean, maintainable code for partner integrations and building automation tooling that streamlined team workflows.",
     highlights: [
-      "Integrated deep and shallow links into Google Flight Search, redirecting users to airline and OTA sites through partner APIs, while also resolved numerous customer-impacting bugs affecting partners on the flight search page that hadthepotential to affect their revenue in agile environment.",
+      "Integrated deep and shallow links into Google Flight Search, redirecting users to airline and OTA sites through partner APIs, while also resolved numerous customer-impacting bugs affecting partners on the flight search page that had the potential to affect their revenue in agile environment.",
       "Resolved numerous customer-impacting bugs on the flight search page that had the potential to affect partner revenue, working in a fast-paced Agile environment.",
       "Conducted peer code reviews to ensure adherence to best practices and coding standards.",
       "Built an end-to-end automation tool that extracts working URLs from raw text and produces a filtered CSV for downstream processing.",

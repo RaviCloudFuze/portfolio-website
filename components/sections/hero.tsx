@@ -123,7 +123,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-400"
             >
-              Backend Product Engineer with{" "}
+              Result Oriented Backend Product Engineer with{" "}
               <span className="font-medium text-slate-800 dark:text-slate-200">
                 3+ years
               </span>{" "}
@@ -131,7 +131,7 @@ export default function Hero() {
               <span className="font-medium text-slate-800 dark:text-slate-200">
                 Java and Spring Boot
               </span>{" "}
-              services that hold up in production — security models, migration
+              services that hold up in production, security models, migration
               pipelines, and analytics backends. I design for clean
               architecture, API contracts, and database performance, and own
               features from{" "}
@@ -156,7 +156,7 @@ export default function Hero() {
                   <span className="font-medium text-slate-900 dark:text-slate-100">
                     security model from scratch
                   </span>{" "}
-                  for CloudFuze Manage — auth, access control, data integrity.
+                  for CloudFuze Manage - auth, access control, data integrity.
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -177,7 +177,7 @@ export default function Hero() {
                   <span className="font-medium text-slate-900 dark:text-slate-100">
                     Google Flight Search
                   </span>{" "}
-                  at Accenture — deep/shallow link routing, bug fixes on a
+                  at Accenture - deep/shallow link routing, bug fixes on a
                   revenue-critical surface.
                 </span>
               </li>

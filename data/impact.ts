@@ -9,7 +9,7 @@ export const impactItems: ImpactItem[] = [
     id: "security-model",
     title: "Owned a security model end-to-end",
     detail:
-      "Designed auth flows, access boundaries, and data-integrity checks for CloudFuze Manage — shipped as the system of record for the product.",
+      "Designed auth flows, access boundaries, and data-integrity checks for CloudFuze Manage Product and shipped as the system of record for the product.",
   },
   {
     id: "migration-refactor",
@@ -33,6 +33,6 @@ export const impactItems: ImpactItem[] = [
     id: "reporting-automation",
     title: "Replaced manual reporting with automation",
     detail:
-      "Bi-weekly client reports now generate themselves via a Google Apps Script + URL-extraction pipeline — saved hours of QA lead time across the team.",
+      "Bi-weekly client reports now generate themselves via a Google Apps Script + URL-extraction pipeline, saved hours of QA lead time across the team.",
   },
 ];

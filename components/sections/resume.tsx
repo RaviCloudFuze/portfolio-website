@@ -13,7 +13,7 @@ import { siteConfig } from "@/data/site";
 import SectionHeading from "@/components/section-heading";
 
 const snapshotBullets = [
-  "3+ years designing Java and Spring Boot microservices for enterprise cloud products",
+  "3+ years designing Java and Spring Boot microservices for enterprise cloud, saas and web based products",
   "Built a complete security model from scratch for the CloudFuze Manage workspace governance product",
   "Engineered backend services for an AI Adoption Dashboard that surfaces real feature usage and cost insights",
   "Refactored core migration services, significantly improving email, message, and content migration reliability",

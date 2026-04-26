@@ -28,7 +28,7 @@ export default function Approach() {
         <SectionHeading
           kicker="Engineering approach"
           title="How I Build Systems"
-          description="A few principles I keep coming back to. Boundaries, contracts, and failure modes — not just classes."
+          description="A few principles I keep coming back to. Boundaries, contracts, and failure modes, not just classes."
         />
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">

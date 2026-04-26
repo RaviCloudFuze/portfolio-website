@@ -23,7 +23,7 @@ export const approachPrinciples: ApproachPrinciple[] = [
   {
     id: "perf-measured",
     title: "Performance is measured, not assumed",
-    body: "Profile the hot path, fix the read amplification, then talk about caches and queues — in that order.",
+    body: "Profile the hot path, fix the read amplification, then talk about caches and queues in that order.",
   },
   {
     id: "operate-what-you-build",

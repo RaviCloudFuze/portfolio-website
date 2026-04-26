@@ -12,7 +12,7 @@ export default function Impact() {
         <SectionHeading
           kicker="Selected outcomes"
           title="Key Impact"
-          description="What I've actually shipped — production systems, refactors, and automation that moved metrics or unblocked teams."
+          description="What I've actually shipped were production systems, refactors, and automation that moved metrics or unblocked teams."
         />
 
         <Stagger className="grid gap-4 sm:grid-cols-2">
