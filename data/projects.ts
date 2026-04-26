@@ -2,6 +2,7 @@ export type Project = {
   id: string;
   title: string;
   description: string;
+  bullets?: string[];
   image: string;
   stack: string[];
   github?: string;
@@ -14,7 +15,14 @@ export const projects: Project[] = [
     id: "insurance-portal",
     title: "Insurance Portal",
     description:
-      "An insurance management platform that lets users explore, select, and claim policies. Implements policy management, eligibility verification, and claims processing to streamline client offerings and improve engagement.",
+      "Policy-management platform where customers explore policies, verify eligibility, and file claims end-to-end.",
+    bullets: [
+      "Designed REST APIs around policy, eligibility, and claims as separate resources with clear request/response contracts.",
+      "Standard Controller → Service → Repository layering; auth and role-based access via Spring Security.",
+      "Modeled the schema for policy versioning and claim state transitions so historical claims stay queryable through schema evolution.",
+      "Used JPA projections and indexed lookups on hot read paths (policy search, claim status) to keep response times stable as the dataset grows.",
+      "Validation, exception handling, and audit logging at the service layer — controllers stay thin and testable.",
+    ],
     image: "/projects/insurance-portal.svg",
     stack: [
       "Java",
@@ -31,7 +39,14 @@ export const projects: Project[] = [
     id: "inventory-management-system",
     title: "Inventory Management System",
     description:
-      "A real-time inventory tracking system with order processing, supplier management, and detailed reporting. Reduces manual errors through automation and an intuitive interface.",
+      "Real-time inventory and order-processing system with supplier management and reporting for SMB warehouses.",
+    bullets: [
+      "REST APIs for inventory, orders, suppliers, and reports — each with its own service boundary so changes don't cascade.",
+      "Concurrency-aware stock updates using transactional writes and optimistic locking to prevent overselling on simultaneous orders.",
+      "Schema designed for report-heavy reads with composite indexes on (product_id, created_at) for stock-movement and order-history queries.",
+      "Explicit order state machine (PLACED → PACKED → SHIPPED → DELIVERED / CANCELLED) instead of a free-text status column.",
+      "DTOs decoupled from JPA entities so the API contract stays stable across schema changes.",
+    ],
     image: "/projects/inventory-management-system.svg",
     stack: [
       "Java",

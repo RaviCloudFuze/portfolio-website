@@ -114,8 +114,8 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="mt-2 font-display text-3xl font-semibold tracking-tight text-slate-500 sm:text-5xl lg:text-6xl dark:text-slate-400"
             >
-              I build things for the{" "}
-              <span className="gradient-text">web</span>.
+              I build scalable{" "}
+              <span className="gradient-text">backend systems</span>.
             </motion.h2>
             <motion.p
               initial={{ opacity: 0, y: 16 }}
@@ -123,24 +123,66 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg dark:text-slate-400"
             >
-              Result-oriented backend engineer with{" "}
+              Backend Product Engineer with{" "}
               <span className="font-medium text-slate-800 dark:text-slate-200">
                 3+ years
               </span>{" "}
-              building scalable microservices, REST APIs, and data-driven
-              distributed systems in{" "}
+              shipping{" "}
               <span className="font-medium text-slate-800 dark:text-slate-200">
                 Java and Spring Boot
-              </span>
-              . Focused on performance, clean architecture, and end-to-end
-              ownership. Currently working as a{" "}
-              <span className="font-medium text-slate-800 dark:text-slate-200">
-                Senior Software Engineer
               </span>{" "}
-              building workspace governance, security, and an AI Dashboard
-              showcasing real AI usage and costs for systems, all in an Agile
-              environment.
+              services that hold up in production — security models, migration
+              pipelines, and analytics backends. I design for clean
+              architecture, API contracts, and database performance, and own
+              features from{" "}
+              <span className="font-medium text-slate-800 dark:text-slate-200">
+                schema to deploy
+              </span>
+              . Currently at CloudFuze building workspace governance, security,
+              and an AI Adoption analytics backend.
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35 }}
+              className="mt-6 max-w-2xl"
+            >
+            <ul className="space-y-2.5 text-base leading-relaxed text-slate-700 dark:text-slate-300">
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-brand-500 to-accent-500" />
+                <span>
+                  Designed and shipped a{" "}
+                  <span className="font-medium text-slate-900 dark:text-slate-100">
+                    security model from scratch
+                  </span>{" "}
+                  for CloudFuze Manage — auth, access control, data integrity.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-brand-500 to-accent-500" />
+                <span>
+                  Built backend services for an{" "}
+                  <span className="font-medium text-slate-900 dark:text-slate-100">
+                    AI Adoption Dashboard
+                  </span>{" "}
+                  surfacing feature usage and cost signals across enterprise
+                  tenants.
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-brand-500 to-accent-500" />
+                <span>
+                  Shipped partner-integration code on{" "}
+                  <span className="font-medium text-slate-900 dark:text-slate-100">
+                    Google Flight Search
+                  </span>{" "}
+                  at Accenture — deep/shallow link routing, bug fixes on a
+                  revenue-critical surface.
+                </span>
+              </li>
+            </ul>
+            </motion.div>
           </div>
 
           <motion.div

@@ -75,6 +75,16 @@ export default function Projects() {
                 <p className="mt-2 text-base leading-relaxed text-slate-600 dark:text-slate-400">
                   {p.description}
                 </p>
+                {p.bullets && p.bullets.length > 0 && (
+                  <ul className="mt-4 space-y-2 text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                    {p.bullets.map((b) => (
+                      <li key={b} className="flex items-start gap-2.5">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-br from-brand-500 to-accent-500" />
+                        <span>{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 <div className="mt-4 flex flex-wrap gap-2">
                   {p.stack.map((t) => (
                     <SkillPill key={t} skill={t} />

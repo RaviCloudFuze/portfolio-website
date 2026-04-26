@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Dudipalli Ravi Teja",
   role: "Senior Software Engineer",
   tagline:
-    "Result-oriented backend engineer with 3+ years building scalable microservices, REST APIs, and data-driven systems in Java and Spring Boot. I care about performance, clean code, and shipping end-to-end.",
+    "Result-oriented Backend Product Engineer with 3+ years building and shipping scalable microservices, REST APIs, data-driven distributed systems in Java and Spring Boot. I design for clean architecture, care about performance, clean code, own features from schema and shipping end-to-end.",
   location: "Hyderabad, India",
   email: "ravitejachoudary6@gmail.com",
   phone: "+91 7993498259",

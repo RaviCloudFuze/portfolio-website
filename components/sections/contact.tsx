@@ -86,8 +86,8 @@ export default function Contact() {
         <SectionHeading
           kicker="Contact"
           align="center"
-          title="Let's build something together"
-          description="Send a message and it will open WhatsApp with your note prefilled so we can start the conversation instantly."
+          title="Let's build something that ships"
+          description="Open to Backend Engineer / Backend Product Engineer roles — Java/Spring shops, distributed systems, data-heavy products. Drop a note and I'll reply within 24 hours."
         />
 
         <div className="mx-auto grid max-w-5xl gap-6 lg:grid-cols-[1fr_1.2fr]">
